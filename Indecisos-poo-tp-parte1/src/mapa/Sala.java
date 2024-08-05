@@ -5,15 +5,15 @@ import itens.coletavel.Item;
 
 public class Sala {
     private static final int MAX_OBJETOS_SALA = 10;
-    private final Troll[] trolls;
-    private final Porta[] portas;
-    private final Item[] itensDisponiveis;
+    private final Troll[] TROLLS;
+    private final Porta[] PORTAS;
+    private final Item[] ITENS_DISPONIVEIS;
     private boolean jogadorPresente;
 
     public Sala() {
-        this.trolls = new Troll[MAX_OBJETOS_SALA];
-        this.portas = new Porta[MAX_OBJETOS_SALA];
-        this.itensDisponiveis = new Item[MAX_OBJETOS_SALA];
+        this.TROLLS = new Troll[MAX_OBJETOS_SALA];
+        this.PORTAS = new Porta[MAX_OBJETOS_SALA];
+        this.ITENS_DISPONIVEIS = new Item[MAX_OBJETOS_SALA];
         this.jogadorPresente = false;
     }
 
@@ -31,8 +31,8 @@ public class Sala {
 
     public boolean adicionaTrollSala(){
         for (int troolAtual = 0; troolAtual < MAX_OBJETOS_SALA; troolAtual++) {
-            if (this.trolls[troolAtual] == null) {
-                this.trolls[troolAtual] = new Troll();
+            if (this.TROLLS[troolAtual] == null) {
+                this.TROLLS[troolAtual] = new Troll();
                 return true;
             }
         }
@@ -41,8 +41,8 @@ public class Sala {
 
     public boolean removeTrollSala(){
         for (int troolAtual = 0; troolAtual < MAX_OBJETOS_SALA; troolAtual++) {
-            if (this.trolls[troolAtual] != null) {
-                this.trolls[troolAtual] = null;
+            if (this.TROLLS[troolAtual] != null) {
+                this.TROLLS[troolAtual] = null;
                 return true;
             }
         }
@@ -51,8 +51,8 @@ public class Sala {
 
     public boolean adicionaPortaSala(Porta porta){
         for (int portaAtual = 0; portaAtual < MAX_OBJETOS_SALA; portaAtual++) {
-            if (this.portas[portaAtual] == null) {
-                this.portas[portaAtual] = porta;
+            if (this.PORTAS[portaAtual] == null) {
+                this.PORTAS[portaAtual] = porta;
                 return true;
             }
         }
@@ -61,8 +61,18 @@ public class Sala {
 
     public boolean removePortaSala(Porta porta){
         for (int portaAtual = 0; portaAtual < MAX_OBJETOS_SALA; portaAtual++) {
-            if (this.portas[portaAtual] != null && this.portas[portaAtual].getIdentificador() == porta.getIdentificador()) {
-                this.portas[portaAtual] = porta;
+            if (this.PORTAS[portaAtual] != null && this.PORTAS[portaAtual].getIdentificador() == porta.getIdentificador()) {
+                this.PORTAS[portaAtual] = porta;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean adicionaItemSala(Item item) {
+        for (int itemAtual = 0; itemAtual < MAX_OBJETOS_SALA; itemAtual++) {
+            if (this.ITENS_DISPONIVEIS[itemAtual] != null) {
+                this.ITENS_DISPONIVEIS[itemAtual] = item;
                 return true;
             }
         }
@@ -71,8 +81,8 @@ public class Sala {
 
     public boolean removeItemSala(String nome) {
         for (int itemAtual = 0; itemAtual < MAX_OBJETOS_SALA; itemAtual++) {
-            if (this.itensDisponiveis[itemAtual] != null && this.itensDisponiveis[itemAtual].getNome().equals(nome)) {
-                this.itensDisponiveis[itemAtual] = null;
+            if (this.ITENS_DISPONIVEIS[itemAtual] != null && this.ITENS_DISPONIVEIS[itemAtual].getNome().equals(nome)) {
+                this.ITENS_DISPONIVEIS[itemAtual] = null;
                 return true;
             }
         }
@@ -81,7 +91,7 @@ public class Sala {
 
     private void printaItensSala(){
         System.out.print("Itens disponiveis na sala : | ");
-        for(Item itemAtual : this.itensDisponiveis){
+        for(Item itemAtual : this.ITENS_DISPONIVEIS){
             if(itemAtual == null){
                 continue;
             }
@@ -92,7 +102,7 @@ public class Sala {
 
     private void printaTrollsSala(){
         System.out.print("Criaturas presentes na sala : ");
-        for(Troll troll : trolls){
+        for(Troll troll : TROLLS){
             if(troll == null){
                 continue;
             }
@@ -103,7 +113,7 @@ public class Sala {
 
     private void printaPortasSala(){
         System.out.println("Portas presentes na sala :");
-        for(Porta porta : portas){
+        for(Porta porta : PORTAS){
             if(porta == null){
                 continue;
             }
@@ -112,8 +122,9 @@ public class Sala {
         System.out.println();
     }
 
-    public void printaInfoSala(){
+    public void printaInfoSala(int numeroSala){
         System.out.println("-----------------------------\n");
+        System.out.println("Número da sala : " + numeroSala);
         this.printaItensSala();
         this.printaTrollsSala();
         this.printaPortasSala();

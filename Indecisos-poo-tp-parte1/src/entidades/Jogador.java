@@ -5,14 +5,14 @@ import itens.Mochila;
 
 public class Jogador extends Personagem{
     private static final String ASSINATURA_JOGADOR = "jogador";
-    Mochila mochila;
-    Carteira carteira;
+    private final Mochila MOCHILA;
+    private final Carteira CARTEIRA;
     private int sala;
 
     public Jogador(){
         super(ASSINATURA_JOGADOR);
-        this.mochila = new Mochila();
-        this.carteira = new Carteira();
+        this.MOCHILA = new Mochila();
+        this.CARTEIRA = new Carteira();
         this.sala = 0;
     }
 
@@ -29,8 +29,8 @@ public class Jogador extends Personagem{
         System.out.println("Sala atual : " + this.sala);
         this.exibePersonagem();
         System.out.println();
-        this.mochila.printaConteudoMochila();
-        this.carteira.printaPatrimonio();
+        this.MOCHILA.printaConteudoMochila();
+        this.CARTEIRA.printaPatrimonio();
         System.out.println("-----------------------------------------------");
     }
 }

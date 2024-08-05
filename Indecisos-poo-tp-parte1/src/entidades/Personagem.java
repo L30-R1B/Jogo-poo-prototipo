@@ -1,11 +1,11 @@
 package entidades;
 
 public class Personagem {
-    String tipoPersonagem;
+    private final String TIPO_PERSONAGEM;
     boolean vivo;
 
     public Personagem(String tipoPersonagem){
-        this.tipoPersonagem = tipoPersonagem;
+        this.TIPO_PERSONAGEM = tipoPersonagem;
         vivo = true;
     }
 
@@ -14,7 +14,7 @@ public class Personagem {
     }
 
     public void exibePersonagem(){
-        System.out.print("<<< " + this.tipoPersonagem + " >>>");
+        System.out.print("<<< " + this.TIPO_PERSONAGEM + " >>>");
     }
 
     public boolean isVivo(){

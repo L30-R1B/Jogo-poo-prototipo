@@ -1,13 +1,13 @@
 package mapa;
 
 public class Porta {
-    private final char identificador;
-    private final int salaDestino;
+    private final char IDENTIFICADOR;
+    private final int SALA_DESTINO;
     private boolean aberta;
 
     public Porta(char identificador, int salaDestino){
-        this.identificador = identificador;
-        this.salaDestino = salaDestino;
+        this.IDENTIFICADOR = identificador;
+        this.SALA_DESTINO = salaDestino;
         this.aberta = true;
     }
 
@@ -24,15 +24,15 @@ public class Porta {
     }
 
     public int getSalaDestino(){
-        return salaDestino;
+        return SALA_DESTINO;
     }
 
     public char getIdentificador(){
-        return this.identificador;
+        return this.IDENTIFICADOR;
     }
 
     public void printaPorta(){
-        System.out.print(" < " + this.identificador + " : " + (this.aberta?"aberta":"fechada") + " > ");
+        System.out.print(" < " + this.IDENTIFICADOR + " : " + (this.aberta?"aberta":"fechada") + " > ");
     }
 
 }
